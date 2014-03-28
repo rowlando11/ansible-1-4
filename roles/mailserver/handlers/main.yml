@@ -1,0 +1,4 @@
+# restart ntp service handler
+
+- name: restart postfix
+  service: name=postfix state=restarted

@@ -1,0 +1,27 @@
+# keep time in sync
+---
+  
+- name: install ntp daemon and use clock prefs (Debian like hosts) 
+  apt:  pkg=ntp state=latest
+  tags:
+   - ntp
+
+- name: start ntp daemon (Debian like hosts) 
+  service: name=ntp state=running enabled=yes
+  tags:
+   - ntp
+
+- name: send new config and restart service
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  notify: restart ntp (Debian)
+  tags:
+   - ntp
+
+- name: set correct timezone
+  file: src=/usr/share/zoneinfo/Europe/London dest=/etc/localtime state=link owner=root group=root force=yes
+  tags:
+   - ntp
+
+
+- include: sudo.yml
+- include: user.yml

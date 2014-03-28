@@ -1,0 +1,9 @@
+---
+
+ - name: config for ubuntu servers 
+   hosts: virtual
+
+   roles:
+     - common
+     - webserver
+     - mailserver

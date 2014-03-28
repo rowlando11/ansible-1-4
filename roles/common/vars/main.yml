@@ -1,0 +1,7 @@
+# preferred ntp server
+#preferred: clock.redhat.com
+
+preferred: clock.redhat.com
+preferred2: clock2.redhat.com
+timezone: Europe/London
+

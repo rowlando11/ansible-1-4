@@ -1,0 +1,12 @@
+#keep time in sync
+---
+  
+- name: install apache2 
+  apt:  pkg=apache2 state=installed
+
+- name: start apache2 and enable on startup
+  service: name=apache2 state=running enabled=yes
+
+- name: sync config file 
+  template: src=apache2.conf.j2 dest=/etc/apache2/apache2.conf
+  notify: restart apache

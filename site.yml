@@ -1,0 +1,10 @@
+---
+- hosts: virtual
+  roles:
+     - common
+ 
+   
+  handlers:
+    - include: roles/common/handlers/main.yml
+
+  

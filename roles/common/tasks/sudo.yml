@@ -1,0 +1,6 @@
+---
+
+- name: manage sudoers file
+  template: src=sudoers.j2  dest=/etc/sudoers owner=root mode=440  validate='visudo -cf %s'
+  tags:
+     - sudo

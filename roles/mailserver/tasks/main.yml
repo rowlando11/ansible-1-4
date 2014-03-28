@@ -1,0 +1,24 @@
+# install and manage postfix config 
+---
+  
+- name: install postfix 
+  apt:  pkg=postfix state=installed
+  tags:
+    - postfix
+
+- name: enable postfix and at run time 
+  service: name=postfix state=running enabled=yes
+  tags:
+    - postfix
+
+- name: refresh upon changes to main.cf 
+  template: src=main.cf.j2 dest=/etc/postfix/main.conf
+  notify: restart postfix 
+  tags:
+    - postfix
+ 
+- name: refresh upon changes to master.cf
+  copy: src=master.cf dest=/etc/postfix/master.cf
+  notify: restart postfix
+  tags:
+    - postfix
