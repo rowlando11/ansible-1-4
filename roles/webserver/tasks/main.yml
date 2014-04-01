@@ -3,6 +3,7 @@
   
 - name: install apache 
   apt:  pkg={{ apache }} state=installed
+  when: ansible_os_family == "Debian"
 
 - name: install apache (RedHat)
   yum:  pkg={{ apache }} state=installed
