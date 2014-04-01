@@ -1,4 +1,4 @@
-#keep time in sync
+# manage apache install and configuration
 ---
   
 - name: install apache 
