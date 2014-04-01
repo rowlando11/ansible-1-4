@@ -1,12 +1,16 @@
 #keep time in sync
 ---
   
-- name: install apache2 
-  apt:  pkg=apache2 state=installed
+- name: install apache 
+  apt:  pkg={{ apache }} state=installed
 
-- name: start apache2 and enable on startup
-  service: name=apache2 state=running enabled=yes
+- name: install apache (RedHat)
+  yum:  pkg={{ apache }} state=installed
+  when: ansible_os_family == "RedHat"
+
+- name: start apache and enable on startup
+  service: name={{ apache }} state=running enabled=yes
 
 - name: sync config file 
-  template: src=apache2.conf.j2 dest=/etc/apache2/apache2.conf
+  template: src={{ httpconf }}.conf.j2 dest=/etc/{{ httpconf }}/{{httpconf}}.conf
   notify: restart apache

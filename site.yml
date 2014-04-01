@@ -1,10 +1,6 @@
 ---
-- hosts: virtual
-  roles:
-     - common
- 
-   
-  handlers:
-    - include: roles/common/handlers/main.yml
+# file: site.yml
+- include: webserver.yml
+- include: mailserver.yml
 
   

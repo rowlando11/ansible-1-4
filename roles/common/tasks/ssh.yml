@@ -1,0 +1,20 @@
+# ssh installation (is installed by default CentOS minimal installs)
+---
+  
+- name: install and configure ssh 
+  apt:  pkg={{ ssh }} state=latest
+  when: ansible_os_family == "Debian"
+  tags:
+   - ssh
+
+- name: install and configure ssh
+  yum:  pkg={{ ssh }} state=latest
+  when: ansible_os_family == "RedHat"
+  tags:
+   - ssh
+
+- name: sync sshd config file
+  template: src: {{ ansible_os_family }}-sshd_config.j2 dest=/etc/sshd_config
+  notify: restart ssh
+  tags:
+   - ssh

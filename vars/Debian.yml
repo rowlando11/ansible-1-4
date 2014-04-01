@@ -1,0 +1,6 @@
+---
+# Debian specific parameters
+apache: apache2
+ntp: ntp
+httpconf: apache2
+ssh: ssh

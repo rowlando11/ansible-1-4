@@ -1,0 +1,8 @@
+---
+
+ - name: mailserver build & config rollout  
+   hosts: virtual
+
+   roles:
+     - common
+     - mailserver

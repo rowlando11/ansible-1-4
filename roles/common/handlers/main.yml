@@ -1,9 +1,7 @@
 # restart ntp service handler
 
-- name: restart ntp (Debian)
-  service: name=ntp state=restarted
-  when: ansible_os_family == "Debian"
+- name: restart ntp
+  service: name={{ ntp }} state=restarted
 
-- name: restart ntp (RedHat)
-  service: name=ntpd state=restarted
-  when: ansible_os_family == "RedHat"
+- name: restart ssh
+  service: name={{ sshservice }} state=restarted

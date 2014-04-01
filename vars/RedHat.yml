@@ -1,0 +1,7 @@
+# RedHat/Centos specific params
+---
+apache: httpd
+ntp: ntpd
+httpconf: httpd
+ssh: openssh-server
+sshservice: sshd
