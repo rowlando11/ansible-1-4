@@ -1,8 +1,8 @@
-# add users 
+# manage users and their home dirs
 ---
   
 - name: manage users 
-  user: name={{ item }} state=absent createhome=yes home=/home/{{ item }} shell=/bin/bash
+  user: name={{ item }} state=present createhome=yes home=/home/{{ item }} shell=/bin/bash
   with_items:
      - user1
      - user2
@@ -10,7 +10,7 @@
      - user4
 
 - name: creating .ssh directory for 
-  file: dest=/home/{{ item }}/.ssh mode=700 owner={{ item }}  group={{ item }} state=absent
+  file: dest=/home/{{ item }}/.ssh mode=700 owner={{ item }}  group={{ item }} state=present
   with_items:
      - user1
      - user2
